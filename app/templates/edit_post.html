@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+<h1>Post</h1>
+
+<h1>Hello {{ username }}</h1>
+<h1>Post number {{ post.id }}</h1>
+
+    <h1>Edit Post</h1>
+    <h1>Post number</h1>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <h2>Here are the artists you are currently following:</h2>
+    {% for user in users %}
+        <p>
+            <h2>
+                {{ user.username }}
+            </h2>
+        <p>
+<!--        {{ user.posts }}-->
+        {% for post in posts %}
+<!--            Post User ID-->
+<!--            {{ post.user_id }}-->
+<!--            User ID-->
+<!--            {{ user.id }}-->
+            {% if post.user_id == user.id %}
+<!--            Hello-->
+            {% include 'horizontal_post.html' %}
+            {% endif %}
+<!--            {% if post.user_id == current_user.username %}-->
+<!--                {% include '_post.html' %}-->
+<!--            {% endif %}-->
+        {% endfor %}
+    {% endfor %}
+
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Newer posts
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    Older posts <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
